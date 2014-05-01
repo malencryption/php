@@ -17,14 +17,17 @@
                 <li><a href='assignments.php'>Assignments</a></li>
             </ul>
         </nav>
-        <section id='about'>
-            <h3>About Me</h3>
-            <img id='fam' src="fam.jpg" alt='family'>
-            <p>Once I get my hands in your hair, I will never forget you... </p>
-        </section>
-        <footer>
-            <div></div>
-        </footer>
-
+        <div id='main'>
+            <section id='about'>
+                <h3>About Me</h3>
+                <img id='fam' src="fam.jpg" alt='family'>
+                <p id='float-text'>I am studying Web Design and Development at Brigham Young University Idaho. I am also a cosmetologist! 
+                Once I get my hands in your hair, I will likely never forget you... ;) I also really music and outdoor recreation. </p>
+                
+            </section>
+            <footer>
+                <h3>~Leesa Ruzicka</h3>
+            </footer>
+        </div>
     </body>
 </html>
