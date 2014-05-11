@@ -7,12 +7,19 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>Assignments</title>
+        <link rel="stylesheet" type="text/css" href="main.css">
     </head>
     <body>
-        <h3>Coming Soon!</h3>
-        <?php
-        // put your code here
-        ?>
+        <section id='top'>
+            <h1>Leesa Ruzicka's CS313 Assignments</h1>
+        </section>
+        <?php include 'nav.php';?>
+        <div id="main">
+            <h3>PHP Survey Assignment!</h3>
+        <a href='surveyresults.php'>Click here to go to the survey!</a>
+        
+        <p>More assignments coming soon...</p>
+        </div>
     </body>
 </html>
