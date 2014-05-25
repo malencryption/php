@@ -3,8 +3,8 @@
 session_start();
 function connInv() {
 	$server = 'localhost';
-    $username = 'leesaruz_iClient';
-    $password = 'Jd59wMUo';
+    $username = 'username';
+    $password = 'password';
     $database = 'php_inventory';
     $dsn = "mysql:host=$server; dbname=$database";
 
