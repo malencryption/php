@@ -18,7 +18,7 @@ and open the template in the editor.
         <div id="main">
             <h3>PHP Survey Assignment!</h3>
         <a href='surveyresults.php'>Click here to go to the survey!</a>
-        <h3>PHP Web App: Inventory/h3>
+        <h3>PHP Web App: Inventory</h3>
         <a href='inventory/index.php'>Click here to go to the Inventory App!</a>
         <p>More assignments coming soon...</p>
         </div>
