@@ -1,7 +1,7 @@
 <?php
-session_start;
+session_start();
 
-include 'functions.php';
+require 'functions.php';
 
 	
 // if (isset($_SESSION['loggedin'])){
