@@ -20,10 +20,6 @@ require 'functions.php';
 // 	exit;
 // }
 // else 
-if (isset($_GET['busName'])){
-$busName = $_GET['busName'];
-}
-
 if ($_POST['submit'] == 'Login') {
 	$email = htmlspecialchars($_POST['email']);
 	$pass = $_POST['password'];
@@ -48,7 +44,13 @@ if ($_POST['submit'] == 'Login') {
 		exit;
 	}
 }
+elseif (isset($_GET['busName'])){
+	$busName = $_GET['busName'];
+	include 'view.php';
+	exit;
+}
 else {
+	//default view
 	include 'login.php';
 	exit;
 }

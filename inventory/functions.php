@@ -1,23 +1,32 @@
 <!-- functions.php -->
 <?php
 session_start();
-function connInv() {
 
+echo 'functions: ';
+function connInv() {
+  $dbHost = "";
+  $dbPort = "";
+  $dbUser = "";
+  $dbPassword = "";
+  $dbName = "php_inventory";
+  
+  $openShiftVar = getenv('OPENSHIFT_MYSQL_DB_HOST');
+  
   if ($openShiftVar === null || $openShiftVar == ""){
   	//Not in the openshift environment
-  	//echo "Using local credentials: ";
+  	echo "Using local credentials: ";
   	require 'setLocalDb.php';
     }
   else {
       	//In the openshift environment
-      	//echo "Using openshift credentials: ";
+      	echo "Using openshift credentials: ";
 
       	$dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
       	$dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
       	$dbUser = getenv('OPENSHIFT_MYSQL_DB_PORT');
       	$dbPassword = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
   }
-  //echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPassword<br /> \n";
+  echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPassword<br /> \n";
 
   try {
     $db = new PDO("mysql:host=$dbHost:$dbPort;dbname=$dbName", $dbUser, $dbPassword);
