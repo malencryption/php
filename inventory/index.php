@@ -4,7 +4,42 @@ session_start();
 require 'functions.php';
 
 	
-if ($_SESSION['loggedin'] == 'yes') {
+if (isset($_GET['busName']) && $_GET['busName'] != ''){
+	$busName = $_GET['busName'];
+	echo $busName;
+	$business=getBus($busName);
+
+	if ($business) {
+		echo 'success';
+		$busName = $business['name'];
+		$busDesc = $business['description'];
+		$invId = $business['inventoryId'];
+		$items = getItems($invId);
+		if($items){
+		include 'view.php';
+		exit;
+		}
+		else {
+			$error = 'No items found';
+			include 'view.php';
+			exit;
+		}
+	}
+	else {
+		echo 'business not found';
+	}
+	
+}
+elseif ($_GET['action'] == 'select'){
+	$business = $_SESSION['business'];
+		if ($business) {
+			$busName = $business['name'];
+			$busDesc = $business['description'];
+		}
+	include 'selectbus.php';
+		exit;
+}
+elseif ($_SESSION['loggedin'] == 'yes') {
 	$email = $_SESSION['user'];
 	$business = getBusNames($email);
 		$_SESSION['business'] = $business;
@@ -42,41 +77,6 @@ elseif ($_POST['submit'] == 'Login') {
 		include 'login.php';
 		exit;
 	}
-}
-elseif (isset($_GET['busName']) && $_GET['busName'] != ''){
-	$busName = $_GET['busName'];
-	echo $busName;
-	$business=getBus($busName);
-
-	if ($business) {
-		echo 'success';
-		$busName = $business['name'];
-		$busDesc = $business['description'];
-		$invId = $business['inventoryId'];
-		$items = getItems($invId);
-		if($items){
-		include 'view.php';
-		exit;
-		}
-		else {
-			$error = 'No items found';
-			include 'view.php';
-			exit;
-		}
-	}
-	else {
-		echo 'business not found';
-	}
-	
-}
-elseif ($_GET['action'] == 'select'){
-	$business = $_SESSION['business'];
-		if ($business) {
-			$busName = $business['name'];
-			$busDesc = $business['description'];
-		}
-	include 'selectbus.php';
-		exit;
 }
 else {
 	//default view
