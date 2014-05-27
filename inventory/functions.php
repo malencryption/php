@@ -2,7 +2,7 @@
 <?php
 session_start();
 
-echo 'functions: ';
+var_dump($_SESSION);
 function connInv() {
   $dbHost = "";
   $dbPort = "";
@@ -23,7 +23,7 @@ function connInv() {
 
       	$dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
       	$dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
-      	$dbUser = getenv('OPENSHIFT_MYSQL_DB_PORT');
+      	$dbUser = getenv('OPENSHIFT_MYSQL_DB_USER');
       	$dbPassword = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
   }
   echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPassword<br /> \n";

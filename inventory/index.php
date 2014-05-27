@@ -51,6 +51,7 @@ elseif (isset($_GET['busName'])){
 }
 else {
 	//default view
+	echo 'default view';
 	include 'login.php';
 	exit;
 }
