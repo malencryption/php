@@ -61,6 +61,47 @@ function login($email, $pass) {
     return FALSE;
   }
 }
+
+function hashPassword($password) {
+    $hashed_password = crypt($password, '$5$rounds=5000$runasfastasyoucanforsalt$');
+    return $hashed_password;
+}
+function checkPassword($password, $hashedPassword) {
+    return crypt($password, $hashedPassword) == $hashedPassword;
+}
+function valString($string) {
+    $string = filter_var(trim($string), FILTER_SANITIZE_STRING);
+    return $string;
+}
+
+function valEmail($email) {
+    $email = filter_var(trim($email), FILTER_SANITIZE_EMAIL);
+    $email = filter_var(trim($email), FILTER_VALIDATE_EMAIL);
+    return $email;
+}
+
+function register($fname, $lname, $email, $password) {
+$connInv = connInv();
+  //try to enter name values 
+
+  try {
+    $sql = 'INSERT INTO person (firstName, lastName) VALUES (:fname, :lname)' ;
+    $stmt = $connInv->prepare($sql);
+    $stmt->bindValue(':fname', $fname, PDO::PARAM_STR);
+    $stmt->bindValue(':lname', $lname, PDO::PARAM_STR);
+    $stmt->execute();
+    $result = $stmt->fetch();
+    $stmt->closeCursor();
+  } catch (PDOException $exc) {
+    header('location: ./error.php');
+    exit;
+  }
+  if ($result['password'] == $pass) {
+    return true;
+  } else {
+    return FALSE;
+  }
+}
 function getBusNames($email){
 	$connInv = connInv();
   try {

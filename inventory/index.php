@@ -3,8 +3,28 @@ session_start();
 
 require 'functions.php';
 
-	
-if (isset($_GET['busName']) && $_GET['busName'] != ''){
+if($_GET['register'] == 'Register') {
+	include 'register.php'
+	exit;
+}	
+elseif($_POST['submit'] == 'register') {
+//get values to register
+	$fname = htmlspecialchars($_POST['fname']);
+	$lname = htmlspecialchars($_POST['lname']);
+	$email = htmlspecialchars($_POST['email']);
+	$password = hashPassword($_POST['password']);
+
+$reg = register($fname, $lname, $email, $password);
+	if($reg){
+		//successful register
+
+	}
+	else {
+		//failed register
+		
+	}
+}
+elseif (isset($_GET['busName']) && $_GET['busName'] != ''){
 	$busName = $_GET['busName'];
 	echo $busName;
 	$business=getBus($busName);
