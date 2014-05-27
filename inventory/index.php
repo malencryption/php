@@ -44,10 +44,40 @@ if ($_POST['submit'] == 'Login') {
 		exit;
 	}
 }
-elseif (isset($_GET['busName'])){
+elseif (isset($_GET['busName']) && $_GET['busName'] != ''){
 	$busName = $_GET['busName'];
-	include 'view.php';
-	exit;
+	echo $busName;
+	$business=getBus($busName);
+
+	if ($business) {
+		echo 'success';
+		$busName = $business['name'];
+		$busDesc = $business['description'];
+		$invId = $business['inventoryId'];
+		$items = getItems($invId);
+		if($items){
+		include 'view.php';
+		exit;
+		}
+		else {
+			$error = 'No items found';
+			include 'view.php';
+			exit;
+		}
+	}
+	else {
+		echo 'business not found';
+	}
+	
+}
+elseif ($_GET['action'] == 'select'){
+	$business = $_SESSION['business'];
+		if ($business) {
+			$busName = $business['name'];
+			$busDesc = $business['description'];
+		}
+	include 'selectbus.php';
+		exit;
 }
 else {
 	//default view

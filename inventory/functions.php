@@ -2,7 +2,6 @@
 <?php
 session_start();
 
-var_dump($_SESSION);
 function connInv() {
   $dbHost = "";
   $dbPort = "";
@@ -26,7 +25,7 @@ function connInv() {
       	$dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
       	$dbPassword = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
   }
-  echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPassword<br /> \n";
+  // echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPassword<br /> \n";
 
   try {
     $db = new PDO("mysql:host=$dbHost:$dbPort;dbname=$dbName", $dbUser, $dbPassword);
@@ -81,12 +80,12 @@ function getBusNames($email){
     return FALSE;
   }
 }
-function getBus($email){
+function getBus($busName){
 	$connInv = connInv();
   try {
-    $sql = 'SELECT name, description, inventoryId FROM business JOIN account USING (accountId) WHERE email = :email' ;
+    $sql = 'SELECT name, description, inventoryId FROM business JOIN account USING (accountId) WHERE name = :name' ;
     $stmt = $connInv->prepare($sql);
-    $stmt->bindValue(':email', $email, PDO::PARAM_INT);
+    $stmt->bindValue(':name', $busName, PDO::PARAM_STR);
     $stmt->execute();
     $result = $stmt->fetch();
     $stmt->closeCursor();

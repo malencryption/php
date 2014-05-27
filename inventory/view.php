@@ -19,7 +19,7 @@ session_start();
 			    	<h1>Inventory</h1>
 			    </div>
 			    <div class="col-md-1">
-			    	<p class="btn btn-default"><a href="selectbus.php">Select Business</a></p>
+			    	<p class="btn btn-default"><a href="index.php?action=select">Select Business</a></p>
 			    </div>
 			    <div class="col-md-1 col-md-offset-1" >
 			    	<p class="btn btn-default"><a href="logout.php">Logout</a></p>
@@ -39,6 +39,7 @@ session_start();
 				<div class="col-md-6">
 			    	<h3>Your Items: </h3>
 			    	<?php 
+			    	echo $error;
 			    	foreach ($items as $value) {
 			    	 	echo '<div><p>' .'Name: ' .$value['name'] .'</p><p>' .'Description: ' .$value['description'] .'</p><p>' .'Price: ' .$value['price'] .'</p><p>' .'Size: ' .$value['size'].'</p></div><br/>';
 			    	 } 
