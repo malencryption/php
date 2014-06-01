@@ -1,7 +1,9 @@
-<!-- main inventory view -->
+<!-- Inventory Form -->
 <?php
 session_start(); 
-var_dump($_SESSION);
+$busName = $_SESSION['busName'];
+$items = $_SESSION['items'];
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,26 +37,24 @@ var_dump($_SESSION);
 				<div class="col-md-6">
 			    	<h3>Your Items: </h3>
 			    	<?php 
+			    	foreach($updated as $value){
+			    		echo "$value<br/>";
+			    	}
 			    	echo $error;
+			    	echo '<form action="index.php" method="POST">';
+			    	
 			    	foreach ($items as $value) {
-			    	 	echo '<div><p>' .'Name: ' .$value['name'] .'</p><p>' .'Description: ' .$value['description'] .'</p><p>' .'Price: ' .$value['price'] .'</p><p>' .'Size: ' .$value['size'].'</p></div><br/>';
+			    	 	echo $value['name'] .":  <input type='text' name='$value[productId]' value='$value[quantity]'>".'<br/><br/>';
 			    	 } 
 			    	 ?>
+			    	 
+			    	 <input type="submit" name="submit" value="Update Inventory">
+			    	 </form>
 			    </div>
 			    <div class="col-md-6">
 			    </div>
 		    </div>
-		    <!-- row 4 -->
-		    <div class="row">
-		    	<div class="col-md-6">
-					<p class="btn btn-default">
-						<a href="invform.php">Take Inventory</a>
-					</p>
-			    </div>
-		    	<div class="col-md-6">
-		    	</div>
-		    </div>
-		</div> <!-- end container -->
+		    </div> <!-- end container -->
 		<!-- javascript -->
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	    <script src="js/bootstrap.min.js"></script>
