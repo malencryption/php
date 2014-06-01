@@ -30,15 +30,15 @@ if ($_POST['submit'] === "Update Inventory"){
 	$names = array();
 	$updated = array();
 	$items = $_SESSION['items'];
-	var_dump($_SESSION);
-	var_dump($_POST);
+	// var_dump($_SESSION);
+	// var_dump($_POST);
 	foreach ($items as $value){
 		$quantities[] = $_POST[$value['productId']];
 		$ids[] = $value['productId'];
 		$names[] = $value['name'];
 	}
-	var_dump($quantities);
-	var_dump($ids);
+	// var_dump($quantities);
+	// var_dump($ids);
 	$i = 0;
 	foreach ($ids as $value) {
 		$id = $value;
