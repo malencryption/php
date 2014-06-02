@@ -159,39 +159,40 @@ echo '<p>help!</p>';
 // 	exit;
 // }
 // else
-	if (isset($_GET['busName']) && $_GET['busName'] != ''){
-	$busName = $_GET['busName'];
-	$_SESSION['busName'] = $busName;
-	$business=getBus($busName);
+// 	if (isset($_GET['busName']) && $_GET['busName'] != ''){
+// 	$busName = $_GET['busName'];
+// 	$_SESSION['busName'] = $busName;
+// 	$business=getBus($busName);
 
-	if ($business) {
-		$busName = $business['name'];
-		$busDesc = $business['description'];
-		$busId = $business['businessId'];
-		$invId = $business['inventoryId'];
-		$items = getItems($invId);
-		$_SESSION['items'] = $items;
-		$_SESSION['busId'] = $busId;
-		if ($_GET['action'] === 'edit'){
-			include 'editBus.php';
-			exit;
-		}
-		if($items){
-			include 'view.php';
-			exit;
-		}
-		else {
-			$error = 'No items found';
-			include 'view.php';
-			exit;
-		}
-	}
-	else {
-		echo 'No Businesses found!';
-	}
+// 	if ($business) {
+// 		$busName = $business['name'];
+// 		$busDesc = $business['description'];
+// 		$busId = $business['businessId'];
+// 		$invId = $business['inventoryId'];
+// 		$items = getItems($invId);
+// 		$_SESSION['items'] = $items;
+// 		$_SESSION['busId'] = $busId;
+// 		if ($_GET['action'] === 'edit'){
+// 			include 'editBus.php';
+// 			exit;
+// 		}
+// 		if($items){
+// 			include 'view.php';
+// 			exit;
+// 		}
+// 		else {
+// 			$error = 'No items found';
+// 			include 'view.php';
+// 			exit;
+// 		}
+// 	}
+// 	else {
+// 		echo 'No Businesses found!';
+// 	}
 
-}
-elseif ($_SESSION['loggedin'] == 'yes' || $_GET['action'] == 'select'){
+// }
+// else
+	if ($_SESSION['loggedin'] == 'yes' || $_GET['action'] == 'select'){
 	$email = $_SESSION['user'];
 	$business = getBusNames($email);
 	$_SESSION['business'] = $business;
