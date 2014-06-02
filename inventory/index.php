@@ -246,3 +246,4 @@ else {
 	include 'login.php';
 	exit;
 }
+?>
