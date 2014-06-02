@@ -3,30 +3,43 @@ session_start();
 
 require 'functions.php';
 require 'model.php';
+?>
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="utf-8">
+		<title>Inventory</title>
+		<!-- Bootstrap -->
+	    <link href="css/bootstrap.min.css" rel="stylesheet">
+	    <script src="js/respond.js"></script>
+	</head>
+	<body>
 echo '<p>help!</p>';	
-if($_POST['submit'] === 'Register') {
-	//get values to register
-	$fname = htmlspecialchars($_POST['fname']);
-	$lname = htmlspecialchars($_POST['lname']);
-	$email = htmlspecialchars($_POST['email']);
-	$password = hashPassword($_POST['password']);
+<?php
+// if($_POST['submit'] === 'Register') {
+// 	//get values to register
+// 	$fname = htmlspecialchars($_POST['fname']);
+// 	$lname = htmlspecialchars($_POST['lname']);
+// 	$email = htmlspecialchars($_POST['email']);
+// 	$password = hashPassword($_POST['password']);
 
-// echo "$fname, $lname, $email, $password";
-	$reg = register($fname, $lname, $email, $password);
-	if($reg){
-			//successful register
-		$error =  'Registration Successful!';
-		include 'login.php';
-		exit;
-	}
-	else {
-		//failed register
-		$error = 'Registration Failed.';
-		include 'register.php';
-		exit;
-	}
-}
-elseif ($_POST['submit'] === 'Edit Business'){
+// // echo "$fname, $lname, $email, $password";
+// 	$reg = register($fname, $lname, $email, $password);
+// 	if($reg){
+// 			//successful register
+// 		$error =  'Registration Successful!';
+// 		include 'login.php';
+// 		exit;
+// 	}
+// 	else {
+// 		//failed register
+// 		$error = 'Registration Failed.';
+// 		include 'register.php';
+// 		exit;
+// 	}
+// }
+// else
+	if ($_POST['submit'] === 'Edit Business'){
 	$name = htmlspecialchars($_POST['name']);
 	$description = htmlspecialchars($_POST['description']);
 	$busId = $_SESSION['busId'];
@@ -247,3 +260,5 @@ else {
 	exit;
 }
 ?>
+</body>
+</html>
