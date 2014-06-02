@@ -69,36 +69,37 @@ echo '<p>help!</p>';
 // 	include 'editbus.php';
 // 	exit;
 // }
-elseif ($_POST['submit'] === 'Add Business'){
-	$name = htmlspecialchars($_POST['name']);
-	$description = htmlspecialchars($_POST['description']);
-	$accountId = $_SESSION['accountId'];
-	$addBus = addBus($name, $description, $accountId);
+// else
+// 	if ($_POST['submit'] === 'Add Business'){
+// 	$name = htmlspecialchars($_POST['name']);
+// 	$description = htmlspecialchars($_POST['description']);
+// 	$accountId = $_SESSION['accountId'];
+// 	$addBus = addBus($name, $description, $accountId);
 
-	if ($addBus) {
-		$email = $_SESSION['user'];
-		$business = getBusNames($email);
-		$_SESSION['business'] = $business;
-		if ($business) {
-			$busName = $business['name'];
-			$busDesc = $business['description'];
-			$error= 'Business Added!';
-			include 'selectbus.php';
-			exit;
-		}
-		else {
-			$error .= 'Could not load Businesses';
-			include 'selectbus.php';
-			exit;
-		}
+// 	if ($addBus) {
+// 		$email = $_SESSION['user'];
+// 		$business = getBusNames($email);
+// 		$_SESSION['business'] = $business;
+// 		if ($business) {
+// 			$busName = $business['name'];
+// 			$busDesc = $business['description'];
+// 			$error= 'Business Added!';
+// 			include 'selectbus.php';
+// 			exit;
+// 		}
+// 		else {
+// 			$error .= 'Could not load Businesses';
+// 			include 'selectbus.php';
+// 			exit;
+// 		}
 		
-	}
-	else {
-		$error = 'Could not add business';
-	}
-	include 'selectbus.php';
-	exit;
-}
+// 	}
+// 	else {
+// 		$error = 'Could not add business';
+// 	}
+// 	include 'selectbus.php';
+// 	exit;
+// // }
 elseif ($_POST['submit'] === "Update Inventory"){
 	$quantities = array();
 	$names = array();
