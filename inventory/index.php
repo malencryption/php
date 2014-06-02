@@ -3,7 +3,7 @@ session_start();
 
 require 'functions.php';
 require 'model.php';
-	
+echo '<p>help!</p>';	
 if($_POST['submit'] === 'Register') {
 	//get values to register
 	$fname = htmlspecialchars($_POST['fname']);
