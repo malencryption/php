@@ -24,7 +24,9 @@ session_start();
 				<div class="col-md-6">
 					<h2>Login</h2>
 				</div>
-				
+				<div class="col-md-4">
+					<h2>Register</h2>
+				</div>
 			</div>
 			<!-- row 3 -->
 			<div class="row">

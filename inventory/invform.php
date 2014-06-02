@@ -52,6 +52,15 @@ $items = $_SESSION['items'];
 			    	 </form>
 			    </div>
 			    <div class="col-md-6">
+			    	<h3>Add new item</h3>
+			    	<form action="index.php" method="POST">
+			    	 	Name:  <input type='text' name='name'/><br/><br/>
+			    	 	Description: <input type='text' name='description'/>
+			    	 	Price: $<input type='text' name='price'/>
+			    	 	Size: <input type='text' name='size'/>
+			    	 	Quantity: <input type='text' name='quantity'/>
+			    	 	<input type="submit" name="submit" value="Add Item">
+			    	 </form>
 			    </div>
 		    </div>
 		    </div> <!-- end container -->

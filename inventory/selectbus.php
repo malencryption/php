@@ -28,7 +28,7 @@ session_start();
 					<?php 
 					echo $error;
 					foreach ($business as $value) {
-						echo '<h3>' .$value['name'] .'</h3><p>'.$value['description'] .'</p><p class="btn btn-default" >' ."<a href='?busName=$value[name]'>View inventory for $value[name]</a></p><br/><br/>" .'</p><p class="btn btn-default" >' ."<a href='?action=edit&busName=$value[name]'>Edit $value[name]</a></p><br/><br/>";
+						echo '<h3>' .$value['name'] .'</h3><p>'.$value['description'] .'</p><p class="btn btn-default" >' ."<a href='?busName=$value[name]'>View inventory for $value[name]</a></p><br/><br/>" .'<p class="btn btn-default" >' ."<a href='?action=edit&busName=$value[name]'>Edit $value[name]</a></p><br/><br/>" .'<p class="btn btn-default" >' ."<a href='?action=delete&busName=$value[name]'>Delete $value[name]</a></p><br/><br/>";
 					} ?>
 				    </div>
 			    <div class="col-md-6">
