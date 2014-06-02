@@ -3,12 +3,8 @@ session_start();
 
 require 'functions.php';
 require 'model.php';
-
-if($_GET['register'] === 'Register') {
-	include 'register.php';
-	exit;
-}	
-elseif($_POST['submit'] === 'Register') {
+	
+if($_POST['submit'] === 'Register') {
 	//get values to register
 	$fname = htmlspecialchars($_POST['fname']);
 	$lname = htmlspecialchars($_POST['lname']);
@@ -210,6 +206,10 @@ elseif ($_SESSION['loggedin'] == 'yes' || $_GET['action'] == 'select'){
 
 
 	// }
+elseif($_GET['register'] === 'Register') {
+	include 'register.php';
+	exit;
+}
 elseif ($_POST['submit'] == 'Login') {
 	$email = htmlspecialchars($_POST['email']);
 	$pass = hashPassword($_POST['password']);
