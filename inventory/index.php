@@ -214,7 +214,7 @@ require 'model.php';
 // 	exit;
 // }
 // else
-	if ($_POST['submit'] == 'Login') {
+if ($_POST['submit'] == 'Login') {
 	$email = htmlspecialchars($_POST['email']);
 	$pass = hashPassword($_POST['password']);
 
@@ -251,5 +251,3 @@ else {
 	exit;
 }
 ?>
-</body>
-</html>
