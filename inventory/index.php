@@ -100,65 +100,66 @@ echo '<p>help!</p>';
 // 	include 'selectbus.php';
 // 	exit;
 // // }
-elseif ($_POST['submit'] === "Update Inventory"){
-	$quantities = array();
-	$names = array();
-	$updated = array();
-	$items = $_SESSION['items'];
-	// var_dump($_SESSION);
-	// var_dump($_POST);
-	foreach ($items as $value){
-		$quantities[] = $_POST[$value['productId']];
-		$ids[] = $value['productId'];
-		$names[] = $value['name'];
-	}
-	// var_dump($quantities);
-	// var_dump($ids);
-	$i = 0;
-	foreach ($ids as $value) {
-		$id = $value;
+// elseif ($_POST['submit'] === "Update Inventory"){
+// 	$quantities = array();
+// 	$names = array();
+// 	$updated = array();
+// 	$items = $_SESSION['items'];
+// 	// var_dump($_SESSION);
+// 	// var_dump($_POST);
+// 	foreach ($items as $value){
+// 		$quantities[] = $_POST[$value['productId']];
+// 		$ids[] = $value['productId'];
+// 		$names[] = $value['name'];
+// 	}
+// 	// var_dump($quantities);
+// 	// var_dump($ids);
+// 	$i = 0;
+// 	foreach ($ids as $value) {
+// 		$id = $value;
 
-		$quantity = $quantities[$i];
-		$product = $names[$i];
-		// echo $product;
-		$i++;
-		$invUpdate = updateQuantity($id, $quantity);
-		if ($invUpdate) {
-			$updated[] = "$product updated"; 
-		}
-		else {
-			$updated[] = "$product not updated";
-		}
-	}
-	// var_dump($updated);
-	// $ids = 1;
-	// $quantities = 5;
-	// $invUpdate = updateQuantity($ids, $quantities);
-	// $invUpdate = updateInv($ids, $quantities);
+// 		$quantity = $quantities[$i];
+// 		$product = $names[$i];
+// 		// echo $product;
+// 		$i++;
+// 		$invUpdate = updateQuantity($id, $quantity);
+// 		if ($invUpdate) {
+// 			$updated[] = "$product updated"; 
+// 		}
+// 		else {
+// 			$updated[] = "$product not updated";
+// 		}
+// 	}
+// 	// var_dump($updated);
+// 	// $ids = 1;
+// 	// $quantities = 5;
+// 	// $invUpdate = updateQuantity($ids, $quantities);
+// 	// $invUpdate = updateInv($ids, $quantities);
 
 
-	$busName = $_SESSION['busName'];
-	$business=getBus($busName);
+// 	$busName = $_SESSION['busName'];
+// 	$business=getBus($busName);
 
-	if ($business) {
-		$invId = $business['inventoryId'];
-		$items = getItems($invId);
-		$_SESSION['items'] = $items;
-		if($items){
-			include 'invform.php';
-			exit;
-		}
-		else {
-			$error = 'could not get items';
-		}
-	}
-	else {
-		$error = 'could not find business';
-	}
-	include 'invform.php';
-	exit;
-}
-elseif (isset($_GET['busName']) && $_GET['busName'] != ''){
+// 	if ($business) {
+// 		$invId = $business['inventoryId'];
+// 		$items = getItems($invId);
+// 		$_SESSION['items'] = $items;
+// 		if($items){
+// 			include 'invform.php';
+// 			exit;
+// 		}
+// 		else {
+// 			$error = 'could not get items';
+// 		}
+// 	}
+// 	else {
+// 		$error = 'could not find business';
+// 	}
+// 	include 'invform.php';
+// 	exit;
+// }
+// else
+	if (isset($_GET['busName']) && $_GET['busName'] != ''){
 	$busName = $_GET['busName'];
 	$_SESSION['busName'] = $busName;
 	$business=getBus($busName);
