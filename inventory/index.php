@@ -250,4 +250,7 @@ else {
 	include 'login.php';
 	exit;
 }
+
+include 'login.php';
+exit;
 ?>
