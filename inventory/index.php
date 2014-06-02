@@ -3,19 +3,6 @@ session_start();
 
 require 'functions.php';
 require 'model.php';
-?>
-<!DOCTYPE html>
-<html>
-<head>
-		<meta charset="utf-8">
-		<title>Inventory</title>
-		<!-- Bootstrap -->
-	    <link href="css/bootstrap.min.css" rel="stylesheet">
-	    <script src="js/respond.js"></script>
-	</head>
-	<body>
-echo '<p>help!</p>';	
-<?php
 // if($_POST['submit'] === 'Register') {
 // 	//get values to register
 // 	$fname = htmlspecialchars($_POST['fname']);
@@ -192,23 +179,23 @@ echo '<p>help!</p>';
 
 // }
 // else
-	if ($_SESSION['loggedin'] == 'yes' || $_GET['action'] == 'select'){
-	$email = $_SESSION['user'];
-	$business = getBusNames($email);
-	$_SESSION['business'] = $business;
-	if ($business) {
-		$busName = $business['name'];
-		$busDesc = $business['description'];
-		$busId = $business['businessId'];
-		include 'selectbus.php';
-		exit;
-	}
-	else {
-		$error = 'No Businesses found!';
-		include 'selectbus.php';
-		exit;
-	}
-}
+// 	if ($_SESSION['loggedin'] == 'yes' || $_GET['action'] == 'select'){
+// 	$email = $_SESSION['user'];
+// 	$business = getBusNames($email);
+// 	$_SESSION['business'] = $business;
+// 	if ($business) {
+// 		$busName = $business['name'];
+// 		$busDesc = $business['description'];
+// 		$busId = $business['businessId'];
+// 		include 'selectbus.php';
+// 		exit;
+// 	}
+// 	else {
+// 		$error = 'No Businesses found!';
+// 		include 'selectbus.php';
+// 		exit;
+// 	}
+// }
 	// elseif ($_SESSION['loggedin'] == 'yes') {
 	// 	$email = $_SESSION['user'];
 	// 	$business = getBusNames($email);
@@ -222,11 +209,12 @@ echo '<p>help!</p>';
 
 
 	// }
-elseif($_GET['register'] === 'Register') {
-	include 'register.php';
-	exit;
-}
-elseif ($_POST['submit'] == 'Login') {
+// elseif($_GET['register'] === 'Register') {
+// 	include 'register.php';
+// 	exit;
+// }
+// else
+	if ($_POST['submit'] == 'Login') {
 	$email = htmlspecialchars($_POST['email']);
 	$pass = hashPassword($_POST['password']);
 
