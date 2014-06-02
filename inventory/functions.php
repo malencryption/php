@@ -45,7 +45,7 @@ function connInv() {
 function login($email, $pass) {
 	$connInv = connInv();
   try {
-    $sql = 'SELECT email, password FROM account WHERE email = :email' ;
+    $sql = 'SELECT email, password, accountId FROM account WHERE email = :email' ;
     $stmt = $connInv->prepare($sql);
     $stmt->bindValue(':email', $email, PDO::PARAM_STR);
     $stmt->execute();
@@ -56,7 +56,7 @@ function login($email, $pass) {
     exit;
   }
   if ($result['password'] == $pass) {
-    return true;
+    return $result;
   } else {
     return FALSE;
   }
@@ -64,7 +64,7 @@ function login($email, $pass) {
 function getBusNames($email){
 	$connInv = connInv();
   try {
-    $sql = 'SELECT name, description, inventoryId FROM business JOIN account USING (accountId) WHERE email = :email' ;
+    $sql = 'SELECT businessId, name, description, inventoryId FROM business JOIN account USING (accountId) WHERE email = :email' ;
     $stmt = $connInv->prepare($sql);
     $stmt->bindValue(':email', $email, PDO::PARAM_INT);
     $stmt->execute();
@@ -83,7 +83,7 @@ function getBusNames($email){
 function getBus($busName){
 	$connInv = connInv();
   try {
-    $sql = 'SELECT name, description, inventoryId FROM business JOIN account USING (accountId) WHERE name = :name' ;
+    $sql = 'SELECT businessId, name, description, inventoryId FROM business JOIN account USING (accountId) WHERE name = :name' ;
     $stmt = $connInv->prepare($sql);
     $stmt->bindValue(':name', $busName, PDO::PARAM_STR);
     $stmt->execute();
@@ -177,6 +177,96 @@ function updateQuantity($id, $quantity){
   }
   if ($result) {
     return $result;
+  } else {
+    return FALSE;
+  }
+}
+function hashPassword($password) {
+    $hashed_password = crypt($password, '$5$rounds=5000$runasfastasyoucanforsalt$');
+    return $hashed_password;
+}
+
+function addBus($name, $description, $accountId){
+  $connInv = connInv();
+  try {
+    $sql = 'INSERT INTO business (name, description, accountId) VALUES (:name, :description, :accountId)' ;
+    $stmt = $connInv->prepare($sql);
+    $stmt->bindValue(':name', $name, PDO::PARAM_STR);
+    $stmt->bindValue(':description', $description, PDO::PARAM_STR);
+    $stmt->bindValue(':accountId', $accountId, PDO::PARAM_INT);
+    $stmt->execute();
+    $result = $stmt->rowCount();
+    $stmt->closeCursor();
+  } catch (PDOException $exc) {
+    header('location: ./error.php');
+    exit;
+  }
+  if ($result) {
+    return true;
+  } else {
+    return FALSE;
+  }
+}
+
+function editBus($name, $description, $busId){
+  $connInv = connInv();
+  try {
+    $sql = 'UPDATE business SET name = :name, description = :description WHERE businessId = :busId' ;
+    $stmt = $connInv->prepare($sql);
+    $stmt->bindValue(':name', $name, PDO::PARAM_STR);
+    $stmt->bindValue(':description', $description, PDO::PARAM_STR);
+    $stmt->bindValue(':busId', $busId, PDO::PARAM_INT);
+    $stmt->execute();
+    $result = $stmt->rowCount();
+    $stmt->closeCursor();
+  } catch (PDOException $exc) {
+    header('location: ./error.php');
+    exit;
+  }
+  if ($result) {
+    return true;
+  } else {
+    return FALSE;
+  }
+}
+
+function editBusName($name, $busId){
+  $connInv = connInv();
+  try {
+    $sql = 'UPDATE business SET name = :name WHERE businessId = :busId' ;
+    $stmt = $connInv->prepare($sql);
+    $stmt->bindValue(':name', $name, PDO::PARAM_STR);
+    $stmt->bindValue(':busId', $busId, PDO::PARAM_INT);
+    $stmt->execute();
+    $result = $stmt->rowCount();
+    $stmt->closeCursor();
+  } catch (PDOException $exc) {
+    header('location: ./error.php');
+    exit;
+  }
+  if ($result) {
+    return true;
+  } else {
+    return FALSE;
+  }
+}
+
+function editBusDes($description, $busId){
+  try {
+      $sql = 'UPDATE business SET description = :description WHERE businessId = :busId' ;
+      $stmt = $connInv->prepare($sql);
+      $stmt->bindValue(':description', $description, PDO::PARAM_STR);
+      $stmt->bindValue(':busId', $busId, PDO::PARAM_INT);
+      $stmt->execute();
+      $result = $stmt->rowCount();
+      $stmt->closeCursor();
+    } catch (PDOException $exc) {
+      header('location: ./error.php');
+      exit;
+    }
+
+  if ($result) {
+    return true;
   } else {
     return FALSE;
   }

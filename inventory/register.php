@@ -29,12 +29,12 @@ session_start();
 			<!-- row 3 -->
 			<div class="row">
 				<div class="col-md-6">
-					<p><?php echo $error;?></p>
+					<p><?php echo $error; echo "First: $_SESSION[status1]"?></p>
 					<form action="index.php" method="POST">
-					First Name: <input type="text" name="fname"><br/><br/>
-					Last Name: <input type="text" name="lname"><br/><br/>
-					Email: <input type="email" name="email"><br/><br/>
-					Password: <input type="password" name="password"><br/><br/>
+					First Name: <input type="text" name="fname" value="<?php echo $fname;?>"><br/><br/>
+					Last Name: <input type="text" name="lname" value="<?php echo $lname;?>"><br/><br/>
+					Email: <input type="email" name="email" value="<?php echo $email;?>"><br/><br/>
+					Password: <input type="password" name="password" ><br/><br/>
 					<input type="submit" name="submit" value="Register">
 					</form>
 			    </div>

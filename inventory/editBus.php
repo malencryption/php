@@ -16,7 +16,7 @@ session_start();
 		    <!-- row 1 -->
 		    <header class="row">
 			    <div class="col-md-6">
-			    	<h1>Create/Manage a Business</h1>
+			    	<h1>Edit Your <?php echo $busName;?> Business</h1>
 			    </div>
 		    </header>
 		    <!-- row 2 -->
@@ -24,22 +24,17 @@ session_start();
 		    <!-- row 3 -->
 		    <div class="row">
 				<div class="col-md-6">
-					<h2>Your Businesses: </h2>
+					<h2>Your <?php echo $busName;?> Business: </h2>
 					<?php 
 					echo $error;
-					foreach ($business as $value) {
-						echo '<h3>' .$value['name'] .'</h3><p>'.$value['description'] .'</p><p class="btn btn-default" >' ."<a href='?busName=$value[name]'>View inventory for $value[name]</a></p><br/><br/>" .'</p><p class="btn btn-default" >' ."<a href='?action=edit&busName=$value[name]'>Edit $value[name]</a></p><br/><br/>";
-					} ?>
-				    </div>
-			    <div class="col-md-6">
-			    	<h2>Add a business:</h2>
+					?>
+			 
 			    	<form method="POST" action="index.php">
-			    		Name: <input type="text" name="name"><br /><br />
-			    		Description: <input type="text" name="description"><br /><br/>
-			    		<input type="submit" name="submit" value="Add Business">
+			    		Name: <input type="text" name="name" value="<?php echo $busName;?>"><br /><br />
+			    		Description: <input type="text" name="description" value="<?php echo $busDesc;?>"><br /><br/>
+			    		<input type="submit" name="submit" value="Edit Business">
 			    	</form>
 			    </div>
-		    </div>
 		</div> <!-- end container -->
 		<!-- javascript -->
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
