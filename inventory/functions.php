@@ -143,22 +143,23 @@ function updateItem($name, $description, $price, $size, $itemId){
   $connInv = connInv();
   try {
 
-    $sql = 'UPDATE product SET name = :name, description= :description, price= :p, size=:size WHERE productId = :id' ;
+    $sql = "UPDATE php_inventory.product SET name =:name, description=:description, price=:price, size=:size WHERE productId=:id";
     $stmt = $connInv->prepare($sql);
-    $stmt->bindValue(':name', $name, PDO::PARAM_STR);
-    $stmt->bindValue(':description', $description, PDO::PARAM_STR);
-    $stmt->bindValue(':price', $price, PDO::PARAM_INT);
-    $stmt->bindValue(':size', $size, PDO::PARAM_STR);
-    $stmt->bindValue(':id', $itemId, PDO::PARAM_INT);
+    $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+    $stmt->bindParam(':description', $description, PDO::PARAM_STR);
+    $stmt->bindParam(':price', $price, PDO::PARAM_INT);
+    $stmt->bindParam(':size', $size, PDO::PARAM_STR);
+    $stmt->bindParam(':id', $itemId, PDO::PARAM_INT);
     $stmt->execute();
     $result = $stmt->fetch();
     $stmt->closeCursor();
   } catch (PDOException $exc) {
-    header('location: ./error.php');
+    echo 'Sorry, could not update';
     exit;
   }
   if ($result) {
-    return $result;
+    echo $result;
+    return $result;    
   } else {
     return FALSE;
   }

@@ -31,9 +31,10 @@ session_start();
 			 
 			    	<form method="POST" action="index.php">
 			    		Name: <input type="text" name="name" value="<?php echo $name;?>"><br /><br />
-			    		Description: <input type="text" name="description" value="<?php echo $description;?>"><br /><br/>
-			    		Price: <input type="text" name="price" value="<?php echo $price;?>"><br /><br/>
-			    		Size: <input type="text" name="size" value="<?php echo $size;?>"><br /><br/>
+			    		Description: <input type="text" name="description" value="<?php echo $description;?>"/><br /><br/>
+			    		Price: <input type="text" name="price" value="<?php echo $price;?>"/><br /><br/>
+			    		Size: <input type="text" name="size" value="<?php echo $size;?>"/><br /><br/>
+			    		<input type="hidden" name="itemId" value="<?php echo $itemId; ?>"/>
 			    		<input type="submit" name="submit" value="Update Item">
 			    	</form>
 			    </div>

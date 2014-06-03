@@ -56,6 +56,7 @@ else if ($_POST['submit'] === 'Add Item'){
 }
 else if ($_GET['action'] === 'editItem'){
 	$itemId = $_GET['itemId'];
+	$_SESSION['itemId'] = $itemId;
 	$product = getProduct($itemId);
 	if ($product){
 		$name= $product['name'];
@@ -63,49 +64,60 @@ else if ($_GET['action'] === 'editItem'){
 		$price = $product['price'];
 		$size = $product['size'];
 		$quantity = $product['quantity'];
-include 'editItem.php';
-exit;
+		include 'editItem.php';
+		exit;
 	}
 	else {
 		$error = "Product not found";
 	}
-	if ($_POST['submit'] === 'Update Item'){
-		$name= $_POST['name'];
-		$description = $_POST['description'];
-		$price = $_POST['price'];
-		$size = $_POST['size'];
-
-		$result = editItem($name, $description, $price, $size, $itemId);
-		if ($result) {
+	
+}
+elseif ($_POST['submit'] === 'Update Item'){
+	$name= $_POST['name'];
+	$description = $_POST['description'];
+	$price = $_POST['price'];
+	$size = $_POST['size'];
+	$itemId = $_POST['itemId'];
+echo "$name, $description, $price, $size, $itemId";
+	$result = updateItem($name, $description, $price, $size, $itemId);
+	echo $result;
+	if ($result) {
 		//Item was updated successfully
-			$busName = $_SESSION['busName'];
-			$business=getBus($busName);
+		$busName = $_SESSION['busName'];
+		$business=getBus($busName);
 
-			if ($business) {
-				$invId = $business['inventoryId'];
-				$items = getItems($invId);
-				$_SESSION['items'] = $items;
-				$error= 'Item Added!';
-				include 'view.php';
-				exit;
-			}
-			else {
-				$error = 'Could not find business';
-				include 'selectbus';
-				exit;
-			}
+		if ($business) {
+			$invId = $business['inventoryId'];
+			$items = getItems($invId);
+			$_SESSION['items'] = $items;
+			$error= 'Item Added!';
+			include 'view.php';
+			exit;
 		}
 		else {
-			$error = 'Item not updated...';
-			include 'editItem.php';
+			$error = 'Could not find business';
+			include 'selectbus.php';
 			exit;
 		}
 	}
 	else {
-		include 'view.php';
+		$error = 'Item not updated...';
+		// $product = getProduct($itemId);
+		// if ($product){
+		// 	$name= $product['name'];
+		// 	$description = $product['description'];
+		// 	$price = $product['price'];
+		// 	$size = $product['size'];
+		// 	$quantity = $product['quantity'];
+			include 'editItem.php';
+			exit;
+		// }
+		// else {
+		// 	$error = "Product not found";
+		// }
+		include 'editItem.php';
 		exit;
 	}
-	
 }
 else
 	if ($_POST['submit'] === 'Edit Business'){
