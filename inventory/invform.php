@@ -53,12 +53,13 @@ $items = $_SESSION['items'];
 			    </div>
 			    <div class="col-md-6">
 			    	<h3>Add new item</h3>
+			    	<?php echo $itemError;?>
 			    	<form action="index.php" method="POST">
 			    	 	Name:  <input type='text' name='name'/><br/><br/>
-			    	 	Description: <input type='text' name='description'/>
-			    	 	Price: $<input type='text' name='price'/>
-			    	 	Size: <input type='text' name='size'/>
-			    	 	Quantity: <input type='text' name='quantity'/>
+			    	 	Description: <input type='text' name='description'/><br/><br/>
+			    	 	Price: $<input type='text' name='price'/><br/><br/>
+			    	 	Size: <input type='text' name='size'/><br/><br/>
+			    	 	Quantity: <input type='text' name='quantity'/><br/><br/>
 			    	 	<input type="submit" name="submit" value="Add Item">
 			    	 </form>
 			    </div>

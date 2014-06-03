@@ -164,9 +164,8 @@ function updateQuantity($id, $quantity){
     $stmt->execute();
     $result = $stmt->rowCount();
     $stmt->closeCursor();
-
-    echo "result: $result";
-  } catch (PDOException $exc) {
+  } 
+  catch (PDOException $exc) {
     $errorM = 'fail';
     echo $exc;
     header('location: ./error.php');
@@ -227,6 +226,26 @@ function editBus($name, $description, $busId){
   }
 }
 
+function deleteBus($busId){
+  $connInv = connInv();
+  try {
+    $sql = 'DELETE FROM business WHERE businessId = :busId' ;
+    $stmt = $connInv->prepare($sql);
+    $stmt->bindValue(':busId', $busId, PDO::PARAM_INT);
+    $stmt->execute();
+    $result = $stmt->rowCount();
+    $stmt->closeCursor();
+  } catch (PDOException $exc) {
+    header('location: ./error.php');
+    exit;
+  }
+  if ($result) {
+    return true;
+  } else {
+    return FALSE;
+  }
+}
+
 function editBusName($name, $busId){
   $connInv = connInv();
   try {
@@ -262,6 +281,31 @@ function editBusDes($description, $busId){
       exit;
     }
 
+  if ($result) {
+    return true;
+  } else {
+    return FALSE;
+  }
+}
+
+function addItem($name, $description, $price, $size, $quantity, $invId){
+  $connInv = connInv();
+  try {
+    $sql = 'INSERT INTO product (name, description, price, size, quantity, inventoryId) VALUES (:name, :description, :price, :size, :quantity, :invId)' ;
+    $stmt = $connInv->prepare($sql);
+    $stmt->bindValue(':name', $name, PDO::PARAM_STR);
+    $stmt->bindValue(':description', $description, PDO::PARAM_STR);
+    $stmt->bindValue(':price', $price, PDO::PARAM_STR);
+    $stmt->bindValue(':size', $size, PDO::PARAM_STR);
+    $stmt->bindValue(':quantity', $quantity, PDO::PARAM_INT);
+    $stmt->bindValue(':invId', $invId, PDO::PARAM_INT);
+    $stmt->execute();
+    $result = $stmt->rowCount();
+    $stmt->closeCursor();
+  } catch (PDOException $exc) {
+    header('location: ./error.php');
+    exit;
+  }
   if ($result) {
     return true;
   } else {
