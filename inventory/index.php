@@ -70,9 +70,14 @@ exit;
 		$error = "Product not found";
 	}
 	if ($_POST['submit'] === 'Update Item'){
-		$result = editItem($name, $description, $price, $size, $quantity, $itemId);
+		$name= $_POST['name'];
+		$description = $_POST['description'];
+		$price = $_POST['price'];
+		$size = $_POST['size'];
+
+		$result = editItem($name, $description, $price, $size, $itemId);
 		if ($result) {
-		//Item was added successfully
+		//Item was updated successfully
 			$busName = $_SESSION['busName'];
 			$business=getBus($busName);
 
@@ -80,14 +85,19 @@ exit;
 				$invId = $business['inventoryId'];
 				$items = getItems($invId);
 				$_SESSION['items'] = $items;
-				$itemError= 'Item Added!';
+				$error= 'Item Added!';
 				include 'view.php';
+				exit;
+			}
+			else {
+				$error = 'Could not find business';
+				include 'selectbus';
 				exit;
 			}
 		}
 		else {
-			$itemError = 'Item not updated...';
-			include 'invform.php';
+			$error = 'Item not updated...';
+			include 'editItem.php';
 			exit;
 		}
 	}

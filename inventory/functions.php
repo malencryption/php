@@ -138,6 +138,32 @@ function getProduct($itemId){
     return FALSE;
   }
 }
+
+function updateItem($name, $description, $price, $size, $itemId){
+  $connInv = connInv();
+  try {
+
+    $sql = 'UPDATE product SET name = :name, description= :description, price= :p, size=:size WHERE productId = :id' ;
+    $stmt = $connInv->prepare($sql);
+    $stmt->bindValue(':name', $name, PDO::PARAM_STR);
+    $stmt->bindValue(':description', $description, PDO::PARAM_STR);
+    $stmt->bindValue(':price', $price, PDO::PARAM_INT);
+    $stmt->bindValue(':size', $size, PDO::PARAM_STR);
+    $stmt->bindValue(':id', $itemId, PDO::PARAM_INT);
+    $stmt->execute();
+    $result = $stmt->fetch();
+    $stmt->closeCursor();
+  } catch (PDOException $exc) {
+    header('location: ./error.php');
+    exit;
+  }
+  if ($result) {
+    return $result;
+  } else {
+    return FALSE;
+  }
+}
+
 function updateInv($itemIds, $quantities){
   $connInv = connInv();
   try {
