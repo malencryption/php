@@ -119,7 +119,25 @@ function getItems($invId){
     return FALSE;
   }
 }
-
+function getProduct($itemId){
+  $connInv = connInv();
+  try {
+    $sql = 'SELECT productId, name, description, price, size, quantity FROM product WHERE productId = :itemId' ;
+    $stmt = $connInv->prepare($sql);
+    $stmt->bindValue(':itemId', $itemId, PDO::PARAM_INT);
+    $stmt->execute();
+    $result = $stmt->fetch();
+    $stmt->closeCursor();
+  } catch (PDOException $exc) {
+    header('location: ./error.php');
+    exit;
+  }
+  if ($result) {
+    return $result;
+  } else {
+    return FALSE;
+  }
+}
 function updateInv($itemIds, $quantities){
   $connInv = connInv();
   try {

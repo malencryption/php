@@ -54,7 +54,49 @@ else if ($_POST['submit'] === 'Add Item'){
 		exit;
 	}
 }
+else if ($_GET['action'] === 'editItem'){
+	$itemId = $_GET['itemId'];
+	$product = getProduct($itemId);
+	if ($product){
+		$name= $product['name'];
+		$description = $product['description'];
+		$price = $product['price'];
+		$size = $product['size'];
+		$quantity = $product['quantity'];
+include 'editItem.php';
+exit;
+	}
+	else {
+		$error = "Product not found";
+	}
+	if ($_POST['submit'] === 'Update Item'){
+		$result = editItem($name, $description, $price, $size, $quantity, $itemId);
+		if ($result) {
+		//Item was added successfully
+			$busName = $_SESSION['busName'];
+			$business=getBus($busName);
 
+			if ($business) {
+				$invId = $business['inventoryId'];
+				$items = getItems($invId);
+				$_SESSION['items'] = $items;
+				$itemError= 'Item Added!';
+				include 'view.php';
+				exit;
+			}
+		}
+		else {
+			$itemError = 'Item not updated...';
+			include 'invform.php';
+			exit;
+		}
+	}
+	else {
+		include 'view.php';
+		exit;
+	}
+	
+}
 else
 	if ($_POST['submit'] === 'Edit Business'){
 		$name = htmlspecialchars($_POST['name']);

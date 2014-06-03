@@ -36,7 +36,7 @@ session_start();
 			    	<?php 
 			    	echo $error;
 			    	foreach ($items as $value) {
-			    	 	echo '<div><p>' .'Name: ' .$value['name'] .'</p><p>' .'Description: ' .$value['description'] .'</p><p>' .'Price: ' .$value['price'] .'</p><p>' .'Size: ' .$value['size'].'</p></div><br/>';
+			    	 	echo '<div><p>' .'Name: ' .$value['name'] .'</p><p>' .'Description: ' .$value['description'] .'</p><p>' .'Price: ' .$value['price'] .'</p><p>' .'Size: ' .$value['size'].'</p><p class="btn btn-default"><a href=?action=editItem&itemId=' .$value['productId'] .'>' .'Edit: ' .$value['name'] .'</a></p></div><br/>';
 			    	 } 
 			    	 ?>
 			    </div>
