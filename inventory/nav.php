@@ -10,7 +10,7 @@
                 </button>
         </div>
 		<div class="collapse navbar-collapse" id="collapse">
-            <ul class="nav navbar-nav">
+            <ul class="nav nav-tabs">
 			<?php
 			if ($_SESSION['loggedin'] == 'yes') {
 				echo '<li><a href="index.php?action=select">Select Business</a></li>
