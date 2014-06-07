@@ -47,7 +47,10 @@ session_start();
 		</div>
 		<!-- row 2 -->
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-4">
+
+			</div>
+			<div class="col-md-4">
 				<h2>Login</h2>
 			</div>
 			<div class="col-md-4">
@@ -56,7 +59,10 @@ session_start();
 		</div>
 		<!-- row 3 -->
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-4">
+				<p class="image"><img src="img/lock.jpg" alt="lock"></p>
+			</div>
+			<div class="col-md-4">
 				<p><?php echo $error;?></p>
 				<form action="index.php" method="POST">
 					Email: <input type="email" name="email"><br/><br/>
@@ -72,7 +78,7 @@ session_start();
 				</form>
 			</div>	
 		</div>
-		
+
 	</div> <!-- end container -->
 	<!-- javascript -->
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>

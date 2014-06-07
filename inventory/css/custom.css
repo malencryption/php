@@ -6,7 +6,6 @@ div.container {
 	-webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
 	box-shadow: 1px 2px 3px rgba(0,0,0,.5);
 	color: #696969;
-	min-height: 700px;
 	background-color: rgba(255, 255, 255, .7);	/*background: url(../img/lines.jpg);
 	background-repeat: repeat-x repeat-y;*/
 	margin-top: 10%;
@@ -21,6 +20,13 @@ div.container {
 .welcome img {
 	width: 100%;
 
+	-moz-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+	-webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+	box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+}
+
+p.image img {
+	width: 100%;
 	-moz-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
 	-webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
 	box-shadow: 1px 2px 3px rgba(0,0,0,.5);
