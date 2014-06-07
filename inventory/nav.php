@@ -1,7 +1,7 @@
 <!-- navigation -->
 
 <div class="row">
-	<nav class="navbar navbar-default navbar-left">
+	<nav class="nav nav-tabs">
 		<div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse">
                   <span class="sr-only">Toggle navigation</span>
@@ -17,7 +17,7 @@
 				<li><a href="logout.php">Logout</a></li>';
 			}
 			else {
-				echo '<li><a href="about.php">About the Inventory App</a></li>
+				echo '<li><a href="welcome.php">Home</a></li>
 				<li><a href="login.php">Login</a></li>';
 			}
 			?>
