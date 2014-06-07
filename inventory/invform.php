@@ -12,6 +12,7 @@ $items = $_SESSION['items'];
 		<title>Inventory</title>
 		<!-- Bootstrap -->
 	    <link href="css/bootstrap.min.css" rel="stylesheet">
+	    <link href="css/custom.css" rel="stylesheet">
 	    <script src="js/respond.js"></script>
 	</head>
 	<body>

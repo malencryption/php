@@ -9,6 +9,7 @@ session_start();
 		<title>Inventory</title>
 		<!-- Bootstrap -->
 	    <link href="css/bootstrap.min.css" rel="stylesheet">
+	    <link href="css/custom.css" rel="stylesheet">
 	    <script src="js/respond.js"></script>
 	</head>
 	<body>
@@ -29,7 +30,7 @@ session_start();
 			<!-- row 3 -->
 			<div class="row">
 				<div class="col-md-6">
-					<p><?php echo $error; echo "First: $_SESSION[status1]"?></p>
+					<p><?php echo $error; ?></p>
 					<form action="index.php" method="POST">
 					First Name: <input type="text" name="fname" value="<?php echo $fname;?>"><br/><br/>
 					Last Name: <input type="text" name="lname" value="<?php echo $lname;?>"><br/><br/>
@@ -39,7 +40,7 @@ session_start();
 					</form>
 			    </div>
 			   <div class="col-md-4">
-					<p>With Inventory you can keep track of the products in your business! Simply create a business category and add your items. Then you can update the items and their quantities with ease!</p>
+					<p>With Inventory you can keep track of the products in your business! Simply create a business category and add your items. Then you can update the items and their quantities.</p>
 				</div>	
 		    </div>
 		    

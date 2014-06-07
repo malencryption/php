@@ -78,7 +78,7 @@ elseif ($_POST['submit'] === 'Update Item'){
 	$price = $_POST['price'];
 	$size = $_POST['size'];
 	$itemId = $_POST['itemId'];
-echo "$name, $description, $price, $size, $itemId";
+	echo "$name, $description, $price, $size, $itemId";
 	$result = updateItem($name, $description, $price, $size, $itemId);
 	echo $result;
 	if ($result) {
@@ -109,8 +109,8 @@ echo "$name, $description, $price, $size, $itemId";
 		// 	$price = $product['price'];
 		// 	$size = $product['size'];
 		// 	$quantity = $product['quantity'];
-			include 'editItem.php';
-			exit;
+		include 'editItem.php';
+		exit;
 		// }
 		// else {
 		// 	$error = "Product not found";
@@ -366,10 +366,10 @@ else
 						}
 					}
 					else {
-	//default view
-						var_dump($_POST);
-						echo 'default view';
-						include 'login.php';
+	// //default view
+	// 					var_dump($_POST);
+						// echo 'default view';
+						include 'welcome.php';
 						exit;
 					}
 					?>

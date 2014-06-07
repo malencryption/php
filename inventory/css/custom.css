@@ -1,1 +1,38 @@
 /* this is a custom CSS stylesheet */
+div.container {
+	/*background: url(../img/warehouse.jpg) no-repeat;
+	background-size: 50%;*/
+	-moz-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+	-webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+	box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+	color: #696969;
+	min-height: 700px;
+	background-color: rgba(255, 255, 255, .7);	/*background: url(../img/lines.jpg);
+	background-repeat: repeat-x repeat-y;*/
+	margin-top: 10%;
+	margin-bottom: 10%;
+}
+
+.col-centered {
+    float: none;
+    margin: auto;
+}
+
+.welcome img {
+	width: 100%;
+
+	-moz-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+	-webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+	box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+}
+
+body {
+	background: url(../img/cross.jpg);
+	background-repeat: repeat-x repeat-y;
+}
+
+.little-head {
+margin-bottom: -30px;
+margin-left: 13px;
+margin-top: 20px;
+}

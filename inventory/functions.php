@@ -15,31 +15,31 @@ function connInv() {
   	//Not in the openshift environment
   	// echo "Using local credentials: ";
   	require 'setLocalDb.php';
-    }
+  }
   else {
       	//In the openshift environment
       	// echo "Using openshift credentials: ";
 
-      	$dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
-      	$dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
-      	$dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
-      	$dbPassword = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
-  }
+   $dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
+   $dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
+   $dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
+   $dbPassword = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
+ }
   // echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPassword<br /> \n";
 
-  try {
-    $db = new PDO("mysql:host=$dbHost:$dbPort;dbname=$dbName", $dbUser, $dbPassword);
-    return $db;
-    } 
-    catch (PDOException $exc) {
-      echo 'Sorry, the connection could not be built';
-      exit;
-    }
-  if (is_object($db)) {
-        return $db;
-  } else {
-        return FALSE;
-  }
+ try {
+  $db = new PDO("mysql:host=$dbHost:$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+  return $db;
+} 
+catch (PDOException $exc) {
+  echo 'Sorry, the connection could not be built';
+  exit;
+}
+if (is_object($db)) {
+  return $db;
+} else {
+  return FALSE;
+}
 }
 
 function login($email, $pass) {
@@ -176,12 +176,12 @@ function updateInv($itemIds, $quantities){
       $id = $value;
       $i = 0;
       $amount = $quantities[$i];
-    $i++;
-    $stmt->bindValue(':q', $amount, PDO::PARAM_INT);
-    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-    $stmt->execute();
-    $result = $stmt->rowCount();
-    if (!$result) break;
+      $i++;
+      $stmt->bindValue(':q', $amount, PDO::PARAM_INT);
+      $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+      $stmt->execute();
+      $result = $stmt->rowCount();
+      if (!$result) break;
     }
 
     $stmt->closeCursor();
@@ -223,8 +223,8 @@ function updateQuantity($id, $quantity){
   }
 }
 function hashPassword($password) {
-    $hashed_password = crypt($password, '$5$rounds=5000$runasfastasyoucanforsalt$');
-    return $hashed_password;
+  $hashed_password = crypt($password, '$5$rounds=5000$runasfastasyoucanforsalt$');
+  return $hashed_password;
 }
 
 function addBus($name, $description, $accountId){
@@ -314,17 +314,17 @@ function editBusName($name, $busId){
 
 function editBusDes($description, $busId){
   try {
-      $sql = 'UPDATE business SET description = :description WHERE businessId = :busId' ;
-      $stmt = $connInv->prepare($sql);
-      $stmt->bindValue(':description', $description, PDO::PARAM_STR);
-      $stmt->bindValue(':busId', $busId, PDO::PARAM_INT);
-      $stmt->execute();
-      $result = $stmt->rowCount();
-      $stmt->closeCursor();
-    } catch (PDOException $exc) {
-      header('location: ./error.php');
-      exit;
-    }
+    $sql = 'UPDATE business SET description = :description WHERE businessId = :busId' ;
+    $stmt = $connInv->prepare($sql);
+    $stmt->bindValue(':description', $description, PDO::PARAM_STR);
+    $stmt->bindValue(':busId', $busId, PDO::PARAM_INT);
+    $stmt->execute();
+    $result = $stmt->rowCount();
+    $stmt->closeCursor();
+  } catch (PDOException $exc) {
+    header('location: ./error.php');
+    exit;
+  }
 
   if ($result) {
     return true;
@@ -358,75 +358,75 @@ function addItem($name, $description, $price, $size, $quantity, $invId){
   }
 }
 function register($firstname, $lastname, $email, $password) {
-    $connection = connInv();
-    $connection->beginTransaction();
+  $connection = connInv();
+  $connection->beginTransaction();
 
-    $flag = TRUE;
-    try {
+  $flag = TRUE;
+  try {
         //Insert the first variables using a prepared statement
-        $sql = "INSERT INTO person       
-        (firstName, lastName)
-        VALUES (:first, :last)";
+    $sql = "INSERT INTO person       
+    (firstName, lastName)
+    VALUES (:first, :last)";
 
-        $stmt = $connection->prepare($sql);
-        $stmt->bindValue(':first', $firstname, PDO::PARAM_STR);
-        $stmt->bindValue(':last', $lastname, PDO::PARAM_STR);
+    $stmt = $connection->prepare($sql);
+    $stmt->bindValue(':first', $firstname, PDO::PARAM_STR);
+    $stmt->bindValue(':last', $lastname, PDO::PARAM_STR);
         // $stmt->bindValue(':gender', $gender, PDO::PARAM_STR);
         // $stmt->bindValue(':dob', $dob, PDO::PARAM_STR);
-        $stmt->execute();
+    $stmt->execute();
 
         //determine if the insert worked
         //by getting the primary key created by the insert
-        $userid = $connection->lastInsertId();
-        $stmt->closeCursor();
-        
-    } catch (Exception $ex) {
-        $connection->rollBack();
-        
+    $userid = $connection->lastInsertId();
+    $stmt->closeCursor();
+    
+  } catch (Exception $ex) {
+    $connection->rollBack();
+    
         return 0; //indicates failure
-    }
+      }
 
     //change flag if the insert failed
-    if ($userid < 1) {
+      if ($userid < 1) {
         $flag = FALSE;
-    }
-    $_SESSION['status1'] = $flag;
+      }
+      $_SESSION['status1'] = $flag;
     //if the flag is still true, attempt the second insert
-    if ($flag) {
+      if ($flag) {
         try {
             //write the other variables and the primary key 
             //from the first table to the second table
-            $sql = "INSERT INTO
-            account(email, password, personId)
-            VALUES (:email, :password, :id)";
+          $sql = "INSERT INTO
+          account(email, password, personId)
+          VALUES (:email, :password, :id)";
 
-            $stmt = $connection->prepare($sql);
-            $stmt->bindValue(':email', $email, PDO::PARAM_STR);
-            $stmt->bindValue(':password', $password, PDO::PARAM_STR);
+          $stmt = $connection->prepare($sql);
+          $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+          $stmt->bindValue(':password', $password, PDO::PARAM_STR);
             // $stmt->bindValue(':question', $question, PDO::PARAM_INT);
             // $stmt->bindValue(':answer', $answer, PDO::PARAM_INT);
-            $stmt->bindValue(':id', $userid, PDO::PARAM_INT);
-            $stmt->execute();
+          $stmt->bindValue(':id', $userid, PDO::PARAM_INT);
+          $stmt->execute();
             $rowcount = $stmt->rowCount(); //How many rows were added
             $stmt->closeCursor();
-        } 
-        catch (PDOException $ex) {
+          } 
+          catch (PDOException $ex) {
     //set flag to false indicating the insert could not be completed
             $flag = FALSE;
+          }
         }
-    }
-    if ($rowcount != 1) {
+        if ($rowcount != 1) {
         $flag = FALSE; // the insert failed
-    }
+      }
 
     //check if the flag is true
-    if ($flag) {
+      if ($flag) {
         //make all inserts permanent
         $connection->commit();
         return 1; //a successful registration
-    } else {
+      } else {
         //the flag is false, get rid of any inserted data from the transaction
         $connection->rollBack();
         return 0; //a failed registration
+      }
     }
-}
