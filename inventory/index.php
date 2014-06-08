@@ -296,7 +296,9 @@ else
 					}
 				}
 				else {
-					echo 'No Businesses found!';
+					$error = 'No Businesses found!';
+					include 'selectbus.php';
+							exit;
 				}
 
 			}

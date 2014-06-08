@@ -11,6 +11,8 @@ div.container {
 	margin-top: 10%;
 	margin-bottom: 10%;
 	padding-bottom: 40px;
+	padding-left: 25px;
+	padding-right: 25px;
 }
 
 .col-centered {
@@ -57,7 +59,18 @@ h1 {
 	margin-bottom: 50px; 
 }
 
-.container {
-	padding-left: 25px;
-	padding-right: 25px;
+.bg-info {
+margin-left: 10px;
+border-radius: 10px 10px 10px 10px;
+-moz-border-radius: 10px 10px 10px 10px;
+margin-top: 10px;
+}
+
+.bg-danger {
+	border-radius: 5px 5px 5px 5px;
+	-moz-border-radius: 5px 5px 5px 5px;
+}
+
+.error {
+	color: @brand-danger;
 }
