@@ -2,14 +2,14 @@
 
 <div class="row">
 	<nav class="nav nav-tabs">
-		<div class="navbar-header">
+		<!-- <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse">
                   <span class="sr-only">Toggle navigation</span>
                   <span class="glyphicon glyphicon-arrow-down"></span>
                   MENU
                 </button>
         </div>
-		<div class="collapse navbar-collapse" id="collapse">
+		<div class="collapse navbar-collapse" id="collapse"> -->
             <ul class="nav nav-tabs">
 			<?php
 			if ($_SESSION['loggedin'] == 'yes') {
@@ -22,6 +22,6 @@
 			}
 			?>
 			</ul>
-		</div>
+		<!-- </div> -->
 	</nav>
 </div>

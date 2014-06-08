@@ -230,11 +230,24 @@ function hashPassword($password) {
 function addBus($name, $description, $accountId){
   $connInv = connInv();
   try {
-    $sql = 'INSERT INTO business (name, description, accountId) VALUES (:name, :description, :accountId)' ;
+      $sql = 'INSERT INTO inventory (inventoryId) VALUES (NULL)' ;
+      $stmt = $connInv->prepare($sql);
+      $stmt->execute();
+      $result = $stmt->rowCount();
+      $invId = $connInv->lastInsertId();
+      $stmt->closeCursor();
+    } catch (PDOException $exc) {
+      header('location: ./error.php');
+      exit;
+    }
+  if($result){
+    try {
+    $sql = 'INSERT INTO business (name, description, accountId, inventoryId) VALUES (:name, :description, :accountId, :invId)' ;
     $stmt = $connInv->prepare($sql);
     $stmt->bindValue(':name', $name, PDO::PARAM_STR);
     $stmt->bindValue(':description', $description, PDO::PARAM_STR);
     $stmt->bindValue(':accountId', $accountId, PDO::PARAM_INT);
+    $stmt->bindValue(':invId', $invId, PDO::PARAM_INT);
     $stmt->execute();
     $result = $stmt->rowCount();
     $stmt->closeCursor();
@@ -242,13 +255,16 @@ function addBus($name, $description, $accountId){
     header('location: ./error.php');
     exit;
   }
-  if ($result) {
-    return true;
-  } else {
+    if ($result) {
+      return true;
+    } else {
+      return FALSE;
+    }
+  }
+  else {
     return FALSE;
   }
 }
-
 function editBus($name, $description, $busId){
   $connInv = connInv();
   try {
@@ -356,7 +372,8 @@ function addItem($name, $description, $price, $size, $quantity, $invId){
   } else {
     return FALSE;
   }
-}
+}  
+
 function register($firstname, $lastname, $email, $password) {
   $connection = connInv();
   $connection->beginTransaction();

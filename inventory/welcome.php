@@ -23,15 +23,7 @@ session_start();
 			</header>
 			<div class="row">
 	<nav class="nav nav-tabs">
-		<div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="glyphicon glyphicon-arrow-down"></span>
-                  MENU
-                </button>
-        </div>
-		<div class="collapse navbar-collapse" id="collapse">
-            <ul class="nav nav-tabs">
+		<ul class="nav nav-tabs">
 			<?php
 			if ($_SESSION['loggedin'] == 'yes') {
 				echo '<li><a href="index.php?action=select">Select Business</a></li>
@@ -43,7 +35,6 @@ session_start();
 			}
 			?>
 			</ul>
-		</div>
 	</nav>
 </div>
 		    <!-- row 2 -->

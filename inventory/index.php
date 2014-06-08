@@ -32,6 +32,26 @@ else if ($_POST['submit'] === 'Add Item'){
 	$price = htmlspecialchars($_POST['price']);
 	$size = htmlspecialchars($_POST['size']);
 	$quantity = htmlspecialchars($_POST['quantity']);
+	
+	$busName = $_SESSION['busName'];
+	$business=getBus($busName);
+
+	if ($business) {
+		$invId = $business['inventoryId'];
+		$items = getItems($invId);
+		$_SESSION['items'] = $items;
+		$_SESSION['inventoryId'] = $invId;
+
+		if(!$items){
+			$error = 'could not get items';
+		}
+	}
+	else {
+		$error = 'could not find business';
+	}
+	// include 'invform.php';
+	// exit;
+
 	$invId = $_SESSION['inventoryId'];
 	$result = addItem($name, $description, $price, $size, $quantity, $invId);
 	if ($result) {
@@ -298,7 +318,7 @@ else
 				else {
 					$error = 'No Businesses found!';
 					include 'selectbus.php';
-							exit;
+					exit;
 				}
 
 			}

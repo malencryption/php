@@ -23,14 +23,6 @@ session_start();
 		</header>
 		<div class="row">
 			<nav class="nav nav-tabs">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="glyphicon glyphicon-arrow-down"></span>
-						MENU
-					</button>
-				</div>
-				<div class="collapse navbar-collapse" id="collapse">
 					<ul class="nav nav-tabs">
 						<?php
 						if ($_SESSION['loggedin'] == 'yes') {
@@ -43,7 +35,6 @@ session_start();
 						}
 						?>
 					</ul>
-				</div>
 			</nav>
 		</div>
 		<!-- row 2 -->
@@ -55,7 +46,7 @@ session_start();
 				<form role="form" action="index.php" method="POST">
 					Email: <input type="email" name="email"><br/><br/>
 					Password: <input type="password" name="password"><br/><br/>
-					<button class="btn btn-primary" type="submit" name="submit" value="Login">
+					<button class="btn btn-primary" type="submit" name="submit" value="Login">Login</button>
 				</form>
 			</div>
 			<div class="col-md-4">
@@ -63,7 +54,7 @@ session_start();
 				<p>With Inventory you can keep track of the products in your business! Simply create a business category and add your items. Then you can update the items and their quantities with ease!</p>
 				<p>Don't have an account yet? Go ahead and click Register to get started!</p>
 				<form action='index.php'method='GET'>
-					<button class="btn btn-primary" type="submit" name="register" value="Register">
+					<button class="btn btn-primary" type="submit" name="register" value="Register">Register</button
 				</form>
 			</div>
 			<div class="col-md-4">
