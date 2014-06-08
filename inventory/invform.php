@@ -20,6 +20,7 @@ $items = $_SESSION['items'];
 		    <!-- row 1 -->
 		    <header class="row">
 			    <div class="col-md-6">
+			    				    	<p class="little-head">Welcome to the</p>
 			    	<h1>Inventory App</h1>
 			    </div>
 			</header>
