@@ -32,8 +32,7 @@ session_start();
 		</div>
 		<!-- row 4 -->
 		<div class="row">
-			<?php 
-			echo $error;
+			<?php
 			foreach ($items as $value) {
 				echo '<div class="col-md-3 col-xs-6 bg-info"><p>' .'Name: ' .$value['name'] .'</p><p>' .'Description: ' .$value['description'] .'</p><p>' .'Price: ' .$value['price'] .'</p><p>' .'Size: ' .$value['size'].'</p><p><a class="btn btn-info" href=?action=editItem&itemId=' .$value['productId'] .'>' .'Edit: ' .$value['name'] .'</a></p></div><br/>';
 			} 

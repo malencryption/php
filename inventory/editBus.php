@@ -26,14 +26,20 @@ session_start();
 		    <div class="row">
 				<div class="col-md-6">
 					<h2>Your <?php echo $busName;?> Business: </h2>
-					<?php 
+					<p class="error"><?php 
 					echo $error;
 					?>
-			 
-			    	<form method="POST" action="index.php">
-			    		Name: <input type="text" name="name" value="<?php echo $busName;?>"><br /><br />
-			    		Description: <input type="text" name="description" value="<?php echo $busDesc;?>"><br /><br/>
-			    		<input type="submit" name="submit" value="Edit Business">
+			 		</p>
+			    	<form role="form" method="POST" action="index.php">
+			    		<div class="form-group">
+			    			<label for="name">Name:</label>
+			    			<input class="form-control" type="text" name="name" value="<?php echo $busName;?>">
+			    		</div>
+			    		<div class="form-group">
+			    			<label for="description">Description: </label>
+			    			<input class="form-control" type="text" name="description" value="<?php echo $busDesc;?>">
+			    		</div>
+			    		<button class="btn btn-primary" type="submit" name="submit" value="Edit Business">Edit Business</button>
 			    	</form>
 			    </div>
 		</div> <!-- end container -->

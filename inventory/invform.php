@@ -37,16 +37,19 @@ $items = $_SESSION['items'];
 		</div>
 		<!-- row 4 -->
 		<div class="row">
-			<div class="col-md-3 col-xs-6">
+			<div class="col-md-3 col-xs-6 bg-info">
 				<h3>Your Items: </h3>
+				<p class="error">
 				<?php 
 				foreach($updated as $value){
 					echo "$value<br/>";
 				}
-				echo '<form role="form" action="index.php" method="POST">';
-
+				?>
+				</p>
+				<form role="form" action="index.php" method="POST">
+<?php
 				foreach ($items as $value) {
-					echo '<div class="bg-info form-group"><label for="$value[name]">$value[name]: </label>' ."<input class='form-control' type='text' name='$value[productId]' value='$value[quantity]'>".'</div>';
+					echo "<div class='form-group'><label for='$value[name]'>$value[name]: </label>" ."<input class='form-control' type='text' name='$value[productId]' value='$value[quantity]'>".'</div>';
 				} 
 				?>
 
@@ -55,7 +58,7 @@ $items = $_SESSION['items'];
 		</div>
 		<div class="bg-info col-md-3 col-xs-6">
 			<h3>Add new item</h3>
-			<?php echo $itemError;?>
+			<p class="error"><?php echo $itemError;?></p>
 			<form role="form" action="index.php" method="POST">
 				<div class="form-group">
 					<label for="name">Name:</label>

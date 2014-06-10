@@ -75,5 +75,5 @@ padding-bottom: 10px;
 }
 
 .error {
-	color: @brand-danger;
+	color: #d9534f;
 }

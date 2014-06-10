@@ -145,7 +145,7 @@ else
 		$description = htmlspecialchars($_POST['description']);
 		$busId = $_SESSION['busId'];
 		$editBus = editBus($name, $description, $busId);
-		echo "$name, $description, $busId";
+		// echo "$name, $description, $busId";
 		if ($editBus) {
 			$email = $_SESSION['user'];
 			$business = getBusNames($email);

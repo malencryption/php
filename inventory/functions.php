@@ -151,7 +151,7 @@ function updateItem($name, $description, $price, $size, $itemId){
     $stmt->bindParam(':size', $size, PDO::PARAM_STR);
     $stmt->bindParam(':id', $itemId, PDO::PARAM_INT);
     $stmt->execute();
-    $result = $stmt->fetch();
+    $result = $stmt->rowcount();
     $stmt->closeCursor();
   } catch (PDOException $exc) {
     echo 'Sorry, could not update';
