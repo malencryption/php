@@ -44,8 +44,14 @@ session_start();
 				<h2>Login</h2>
 				<p><?php echo $error;?></p>
 				<form role="form" action="index.php" method="POST">
-					Email: <input type="email" name="email"><br/><br/>
-					Password: <input type="password" name="password"><br/><br/>
+					<div class="form-group">
+						<label for="email">Email:</label>
+						<input class="form control" type="email" name="email">
+					</div>
+					<div class="form group">\
+						<label for="password">Password: </label>
+						<input class="form control" type="password" name="password">
+					</div>
 					<button class="btn btn-primary" type="submit" name="submit" value="Login">Login</button>
 				</form>
 			</div>

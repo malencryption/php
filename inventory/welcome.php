@@ -47,8 +47,8 @@ session_start();
 			<div class="col-md-4 ">
 					<p>With Inventory you can keep track of the products in your business! Simply create a business category and add your items. Then you can update the items and their quantities.</p>
 					<p>Don't have an account yet? Go ahead and click Register to get started!</p>
-					<form action='index.php'method='GET'>
-						<input type="submit" name="register" value="Register">
+					<form role="form" action='index.php'method='GET'>
+						<button class="btn btn-primary" type="submit" name="register" value="Register">Register</button>
 					</form>
 				</div>	
 			</div>
