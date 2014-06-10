@@ -98,11 +98,12 @@ elseif ($_POST['submit'] === 'Update Item'){
 	$price = $_POST['price'];
 	$size = $_POST['size'];
 	$itemId = $_POST['itemId'];
-	echo "$name, $description, $price, $size, $itemId";
+	// echo "$name, $description, $price, $size, $itemId";
 	$result = updateItem($name, $description, $price, $size, $itemId);
 	echo $result;
 	if ($result) {
 		//Item was updated successfully
+		$error= 'Item Updated!';
 		$busName = $_SESSION['busName'];
 		$business=getBus($busName);
 
@@ -110,7 +111,7 @@ elseif ($_POST['submit'] === 'Update Item'){
 			$invId = $business['inventoryId'];
 			$items = getItems($invId);
 			$_SESSION['items'] = $items;
-			$error= 'Item Added!';
+			
 			include 'view.php';
 			exit;
 		}
@@ -225,10 +226,10 @@ else
 				$i++;
 				$invUpdate = updateQuantity($id, $quantity);
 				if ($invUpdate) {
-					$updated[] = "$product updated"; 
+					$updated[] = "$product quantity updated"; 
 				}
 				else {
-					$updated[] = "$product not updated";
+					$updated[] = "$product quantity not updated";
 				}
 			}
 	// var_dump($updated);

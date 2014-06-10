@@ -49,7 +49,7 @@ $items = $_SESSION['items'];
 				<form role="form" action="index.php" method="POST">
 <?php
 				foreach ($items as $value) {
-					echo "<div class='form-group'><label for='$value[name]'>$value[name]: </label>" ."<input class='form-control' type='text' name='$value[productId]' value='$value[quantity]'>".'</div>';
+					echo "<div class='form-group'><label for='$value[name]'>$value[name] Quantity: </label>" ."<input class='form-control' type='text' name='$value[productId]' value='$value[quantity]'>".'</div>';
 				} 
 				?>
 
