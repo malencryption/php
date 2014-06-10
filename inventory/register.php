@@ -48,15 +48,27 @@ session_start();
 		<div class="row">
 			<div class="col-md-3 col-xs-6">
 				<p><?php echo $error; ?></p>
-				<form action="index.php" method="POST">
-					First Name: <input type="text" name="fname" value="<?php echo $fname;?>"><br/><br/>
-					Last Name: <input type="text" name="lname" value="<?php echo $lname;?>"><br/><br/>
-					Email: <input type="email" name="email" value="<?php echo $email;?>"><br/><br/>
-					Password: <input type="password" name="password" ><br/><br/>
-					<input type="submit" name="submit" value="Register">
+				<form role="form" action="index.php" method="POST">
+					<div class="form-group">
+						<label for="fname">First Name:</label>
+						<input class="form-control" type="text" name="fname" value="<?php echo $fname;?>">
+					</div>
+					<div class="form-group">
+						<label for="lname">Last Name:</lable>
+						<input class="form-control" type="text" name="lname" value="<?php echo $lname;?>">
+					</div>
+					<div class="form-group">
+						<label for="email">Email:</label>
+						<input class="form-control" type="email" name="email" value="<?php echo $email;?>">
+					</div>
+					<div class="form-group">
+						<label for="password">Password:</label>
+						<input class="form-control" type="password" name="password" >
+					</div>
+					<button class="btn btn-primary" type="submit" name="submit" value="Register">Register</button>
 				</form>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-3 col-xs-6">
 				<p>With Inventory you can keep track of the products in your business! Simply create a business category and add your items. Then you can update the items and their quantities.</p>
 			</div>	
 		</div>
