@@ -41,7 +41,7 @@ else if ($_POST['submit'] === 'Add Item'){
 		$items = getItems($invId);
 		$_SESSION['items'] = $items;
 		$_SESSION['inventoryId'] = $invId;
-
+		var_dump($items);
 		if(!$items){
 			$error = 'could not get items';
 		}
