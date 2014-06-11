@@ -374,6 +374,26 @@ function addItem($name, $description, $price, $size, $quantity, $invId){
   }
 }  
 
+function deleteItem($itemId){
+  $connInv = connInv();
+  try {
+    $sql = 'DELETE FROM product WHERE productId = :itemId' ;
+    $stmt = $connInv->prepare($sql);
+    $stmt->bindValue(':itemId', $itemId, PDO::PARAM_INT);
+    $stmt->execute();
+    $result = $stmt->rowCount();
+    $stmt->closeCursor();
+  } catch (PDOException $exc) {
+    header('location: ./error.php');
+    exit;
+  }
+  if ($result) {
+    return true;
+  } else {
+    return FALSE;
+  }
+}
+
 function register($firstname, $lastname, $email, $password) {
   $connection = connInv();
   $connection->beginTransaction();

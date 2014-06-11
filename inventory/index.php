@@ -41,8 +41,10 @@ else if ($_POST['submit'] === 'Add Item'){
 		$items = getItems($invId);
 		$_SESSION['items'] = $items;
 		$_SESSION['inventoryId'] = $invId;
-		var_dump($items);
-		if(!$items){
+
+		// var_dump($business);
+		// var_dump($items);
+		if(!isset($items)){
 			$error = 'could not get items';
 		}
 	}
@@ -91,6 +93,29 @@ else if ($_GET['action'] === 'editItem'){
 		$error = "Product not found";
 	}
 	
+}
+else if ($_GET['action'] === 'deleteItem'){
+	$itemId = $_GET['itemId'];
+	$result = deleteItem($itemId);
+		if ($result) {
+		//Item was deleted successfully
+		$busName = $_SESSION['busName'];
+		$business=getBus($busName);
+
+		if ($business) {
+			$invId = $business['inventoryId'];
+			$items = getItems($invId);
+			$_SESSION['items'] = $items;
+			$error= 'Item Deleted';
+			include 'view.php';
+			exit;
+		}
+	}
+	else {
+		$error = 'Item not deleted...';
+		include 'view.php';
+		exit;
+	}
 }
 elseif ($_POST['submit'] === 'Update Item'){
 	$name= $_POST['name'];
