@@ -54,7 +54,7 @@ session_start();
 						<input class="form-control" type="text" name="fname" value="<?php echo $fname;?>">
 					</div>
 					<div class="form-group">
-						<label for="lname">Last Name:</lable>
+						<label for="lname">Last Name:</label>
 						<input class="form-control" type="text" name="lname" value="<?php echo $lname;?>">
 					</div>
 					<div class="form-group">
