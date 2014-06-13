@@ -20,7 +20,10 @@ and open the template in the editor.
         <a href='surveyresults.php'>Click here to go to the survey!</a>
         <h3>PHP Web App: Inventory</h3>
         <a href='inventory/index.php'>Click here to go to the Inventory App!</a>
+        <h3>Java Web App: Hello World</h3>
+        <a href='http://java-lruzicka.rhcloud.com/helloWorld/HelloServlet'>Click here to go to the 'Hello World' page!</a>
         <p>More assignments coming soon...</p>
+        
         </div>
     </body>
 </html>
