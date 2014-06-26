@@ -1,0 +1,88 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 30, 2014, 8:53:20 PM
+    Author     : Leesa
+*/
+@font-face {
+  font-family: 'Euphoria Script';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Euphoria Script'), local('EuphoriaScript-Regular'), url(http://themes.googleusercontent.com/static/fonts/euphoriascript/v2/c4XB4Iijj_NvSsCF4I0O2DVi_4UGEKHjyEZCTqR5Ysg.woff) format('woff');
+}
+@font-face {
+  font-family: 'Cabin';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Cabin Regular'), local('Cabin-Regular'), url(http://themes.googleusercontent.com/static/fonts/cabin/v5/JEgmtEDzc-IH8jBshQXrYA.woff) format('woff');
+}
+@font-face {
+  font-family: 'Cabin';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Cabin Italic'), local('Cabin-Italic'), url(http://themes.googleusercontent.com/static/fonts/cabin/v5/jZSwn9gMgsQpyndNljYDIw.woff) format('woff');
+}
+h1, h2, h3, h4 {
+    font-family: 'Euphoria Script', serif;
+}
+h1 {
+    font-size: 3em;
+}
+h2 {
+    font-size: 2em;
+}
+h3 {
+    font-size: 1.5em;
+}
+body {
+    background-color: #440644;
+    font-family: 'Cabin', sans-serif;
+}
+#top {
+    color: rgba(255, 255, 255, .9);
+    float:left;
+    margin-left: 10px;
+}
+nav {
+    background-color: rgba(255, 255, 255, .9);
+    clear:both;
+    padding: 10px 10px 10px 10px;
+    margin: 0px 10% 0px 10%;
+    border-bottom: 2px black solid;
+}
+nav li {
+    list-style: none;
+    display: inline;
+    padding-right: 5px;
+}
+
+nav li a{
+    color: purple;
+}
+a:link {text-decoration: none;}      /* unvisited link */
+a:visited {color:gray;}  /* visited link */
+a:hover {background-color:white;}  /* mouse over link */
+a:active {background-color:white;}  /* selected link */
+
+#main{
+    background-color: rgba(255, 255, 255, .9);
+    margin: 0px 10% 0px 10%;
+    padding: 10px 10px 10px 50px;
+}
+p#float-text {
+    float: left;
+    margin-left: 3%;
+    max-width: 500px;
+}
+footer {
+    clear: both;
+    padding: 10px 10px 10px 0px;
+}
+img#fam {
+    height: 300px;
+    width: auto;
+    float: left;
+}
