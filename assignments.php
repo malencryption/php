@@ -22,8 +22,9 @@ and open the template in the editor.
         <a href='inventory/index.php'>Click here to go to the Inventory App!</a>
         <h3>Java Web App: Hello World</h3>
         <a href='http://java-lruzicka.rhcloud.com/helloWorld/HelloServlet'>Click here to go to the 'Hello World' page!</a>
+        <h3>Java Web App: Forum</h3>
+        <a href='http://java-lruzicka.rhcloud.com/forum/signin.jsp'>Click here to go to the 'Java Forum' page!</a>
         <p>More assignments coming soon...</p>
-        
         </div>
     </body>
 </html>
